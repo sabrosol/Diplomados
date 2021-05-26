@@ -11,7 +11,7 @@ class operacion{
            <div class="card text-center mb-4">
            <div class="card-body">
                 <input type="checkbox" value="" id="prueba">
-           		<strong>Tarea</strong>: ${actividad.tarea}
+           		<strong>Actividad Pendiente</strong>: ${actividad.tarea}
            		<a href="#" class"btn btn-danger" name="delete">Delete</a>
            </div>
            </div>
