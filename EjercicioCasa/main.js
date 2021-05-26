@@ -8,9 +8,9 @@ class operacion{
         const listaActivi = document.getElementById("Lista-Actividad");
         const element = document.createElement("div");
         element.innerHTML = `
-           <div class="card text-center mb-4">
+           <div class="card text-center mb-8">
            <div class="card-body">
-                <input type="checkbox" value="" id="prueba">
+                <input type="checkbox" value="">
            		<strong>Actividad Pendiente</strong>: ${actividad.tarea}
            		<a href="#" class"btn btn-danger" name="delete">Delete</a>
            </div>
