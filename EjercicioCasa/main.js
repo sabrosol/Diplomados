@@ -12,24 +12,35 @@ class operacion{
            <div class="card-body">
                 <input type="checkbox" value="">
            		<strong>Actividad Pendiente</strong>: ${actividad.tarea}
-           		<a href="#" class"btn btn-danger" name="delete">Delete</a>
+                <input type="button" class="bt3 btg" name="delete" value="Delete" ></input>   
+                
            </div>
            </div>
         `;
         listaActivi.appendChild(element);
     }
-
+/*<a href="#" class="bt1 btr" name="delete">Delete</a>  */
     resetForm(){
         document.getElementById("formulario").reset();
     }
+
     eliminaTarea(element){
-        //let borrar = 0;  
-        /*if (element.checkValidity() === true){ 
-            borrar = 1; 
-        }*/    
         if (element.name === 'delete'){
                 element.parentElement.parentElement.parentElement.remove();
         }
+    }
+
+    SeguirTarea(actividad){
+        const listaActivi = document.getElementById("Seguir-Actividad");
+        const element = document.createElement("div");
+        element.innerHTML = `
+           <div class="card text-center mb-8">
+           <div class="card-body">
+               <input type="checkbox" value="" checked> <s> ${actividad.tarea}
+           </div>
+           </div>
+        `;
+        listaActivi.appendChild(element);
     }
 }
 document.getElementById("formulario")
@@ -37,13 +48,17 @@ document.getElementById("formulario")
     //alert('Aqui Ingreso');
     //console.log(document.getElementById("tarea").value)
     const tarea = document.getElementById("tarea").value;
-    
-    const actividad = new Actividades(tarea);
+    if (tarea == ""){
+        document.getElementById("tarea").focus();
+    }
+    else{
+        const actividad = new Actividades(tarea);
 
-    const listaActividad = new operacion();
-    listaActividad.addTarea(actividad);
-    listaActividad.resetForm();
-    
+        const listaActividad = new operacion();
+        listaActividad.addTarea(actividad);
+        listaActividad.resetForm();
+        
+    }
     e.preventDefault();
 });
 
@@ -51,5 +66,29 @@ document.getElementById("Lista-Actividad")
      .addEventListener('click', function(e) {
         const borrar = new operacion();
         borrar.eliminaTarea(e.target);
+
+
+        /*const listaActividad = new operacion();
+        listaActividad.SeguirTarea(borrar);
+        e.preventDefault();*/
      }
+);
+
+document.getElementById("Seguir-Actividad")
+.addEventListener('submit', function(e) {
+    //alert('Aqui Ingreso');
+    //console.log(document.getElementById("tarea").value)
+    const tarea = document.getElementById("tarea").value;
+    if (tarea == ""){
+        document.getElementById("tarea").focus();
+    }
+    else{
+        const actividad = new Actividades(tarea);
+
+        const listaActividad = new operacion();
+        listaActividad.addTarea(actividad);
+        listaActividad.resetForm();
+    }
+    e.preventDefault();
+}
 );
